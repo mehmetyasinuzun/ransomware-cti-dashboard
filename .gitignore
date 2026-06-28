@@ -1,0 +1,27 @@
+# Go derleme ciktilari
+backend/server
+backend/pipeline
+*.exe
+
+# SQLite WAL/SHM (calisma aninda olusur)
+*.db-wal
+*.db-shm
+
+# Pipeline disk cache'i (grup profilleri / IOC yanitlari)
+data/cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Ortam
+.env
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Proje odev dokumani (repoya dahil degil)
+ransomware-cti-dashboard-1-2.pdf

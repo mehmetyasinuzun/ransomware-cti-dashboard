@@ -1,0 +1,55 @@
+services:
+  # Veri pipeline: API'lerden ceker, isler, SQLite + dataset uretir, sonra cikar.
+  # Snapshot (data/cti.db) zaten varsa ve REFRESH=true degilse atlar -> cevrimdisi calisir.
+  pipeline:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.pipeline
+    environment:
+      DATA_DIR: /data
+      DB_PATH: /data/cti.db
+      WINDOW_FROM: ${WINDOW_FROM:-2024-07}
+      ABUSECH_AUTH_KEY: ${ABUSECH_AUTH_KEY:-}
+      REFRESH: ${REFRESH:-false}
+      THROTTLE_MS: ${THROTTLE_MS:-800}
+    volumes:
+      - ./data:/data
+    restart: "no"
+
+  # Analitik API (Go, salt-okunur sorgular + IOC arama)
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.server
+    environment:
+      DB_PATH: /data/cti.db
+      API_ADDR: ":8080"
+      DATA_DIR: /data
+      WINDOW_FROM: ${WINDOW_FROM:-2024-07}
+      ABUSECH_AUTH_KEY: ${ABUSECH_AUTH_KEY:-}
+      THROTTLE_MS: ${THROTTLE_MS:-800}
+      # Otomatik tazeleme: kac saatte bir veriyi yeniden ceksin (0 = kapali)
+      REFRESH_INTERVAL_HOURS: ${REFRESH_INTERVAL_HOURS:-24}
+    volumes:
+      - ./data:/data
+    depends_on:
+      pipeline:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "/server", "-healthcheck"]
+      interval: 10s
+      timeout: 4s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+
+  # Arayuz (React build -> nginx, /api'yi server'a proxy'ler)
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      server:
+        condition: service_healthy
+    restart: unless-stopped
