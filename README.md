@@ -8,6 +8,31 @@ Sistem; saldırı grupları, hedef ülkeler, sektörler ve zaman bazlı trendler
 
 ---
 
+## Ekran Görüntüleri
+
+### Genel Bakış
+![Genel Bakış](docs/screenshots/01-genel-bakis.png)
+
+### Tehdit Grupları
+![Tehdit Grupları](docs/screenshots/02-tehdit-gruplari.png)
+
+### Coğrafya & Sektör
+![Coğrafya ve Sektör](docs/screenshots/03-cografya-sektor.png)
+
+### Zaman Serisi
+![Zaman Serisi](docs/screenshots/04-zaman-serisi.png)
+
+### IOC Arama
+![IOC Arama](docs/screenshots/05-ioc-arama.png)
+
+### Kayıtlar
+![Kayıtlar](docs/screenshots/06-kayitlar.png)
+
+### Mobil Görünüm
+<img src="docs/screenshots/07-mobil.png" alt="Mobil görünüm" width="300" />
+
+---
+
 ## Mimari
 
 Üç servis, tek bir veri hacmi (`./data`) üzerinden konuşur:
