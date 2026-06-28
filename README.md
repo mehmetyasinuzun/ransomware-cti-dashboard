@@ -28,9 +28,6 @@ Sistem; saldırı grupları, hedef ülkeler, sektörler ve zaman bazlı trendler
 ### Kayıtlar
 ![Kayıtlar](docs/screenshots/06-kayitlar.png)
 
-### Mobil Görünüm
-<img src="docs/screenshots/07-mobil.png" alt="Mobil görünüm" width="300" />
-
 ---
 
 ## Mimari
