@@ -199,10 +199,4 @@ Analitik uç noktaları (`summary`, `groups`, `countries`, `sectors`, `timeserie
 
 ---
 
-## Lisans
-
-Kaynak kod [MIT](LICENSE) lisansı altındadır. Veri kaynakları kendi kullanım şartlarına tabidir: ransomware.live ("personal use only"), abuse.ch (ThreatFox / MalwareBazaar) ve MITRE ATT&CK.
-
----
-
 Yıldız · Cyber Threat Intelligence
