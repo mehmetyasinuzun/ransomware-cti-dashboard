@@ -62,7 +62,6 @@ type Summary struct {
 	Meta         map[string]string `json:"meta"`
 }
 
-// floorCond: floor bos degilse "date >= ?" kosulunu ekler.
 func floorCond(floor string, existing []string, args []any) ([]string, []any) {
 	if floor != "" {
 		existing = append(existing, "date >= ?")
