@@ -199,7 +199,6 @@ func (c *Client) malwareBazaar(ctx context.Context, signature string, limit int)
 	return out, nil
 }
 
-// FamilyIOCs: bir grup icin gercek IOC'lari (IP + hash) ceker.
 func (c *Client) FamilyIOCs(ctx context.Context, group string, limit int) ([]model.IOC, bool) {
 	f, ok := mapFamily(group)
 	if !ok {
