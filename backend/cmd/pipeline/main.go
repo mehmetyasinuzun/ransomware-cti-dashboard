@@ -16,7 +16,6 @@ func main() {
 
 	var err error
 	if os.Getenv("IOC_ONLY") == "true" {
-		// Sadece IOC katmanini yeniden cek (kurban verisi DB'den; ransomware.live'a dokunmaz)
 		_, err = ingest.ReingestIOCs(ctx, cfg)
 	} else {
 		_, err = ingest.Run(ctx, cfg)
