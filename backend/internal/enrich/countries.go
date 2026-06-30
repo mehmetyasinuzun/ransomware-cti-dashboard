@@ -1,6 +1,5 @@
 package enrich
 
-// ISO 3166-1 alpha-2 -> [English, Turkce] (kaynak: CLDR / Intl.DisplayNames)
 var countryNames = map[string][2]string{
 	"AC": {"Ascension Island", "Ascension Adası"},
 	"AD": {"Andorra", "Andorra"},
