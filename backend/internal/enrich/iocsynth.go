@@ -27,8 +27,6 @@ func seed(group string) uint64 {
 	return v
 }
 
-// SyntheticIOCs: abuse.ch anahtari yokken cevrimdisi test icin deterministik,
-// gercek olmayan IOC uretir. Source alani daima "synthetic" olur.
 func SyntheticIOCs(group string, n int) []model.IOC {
 	r := &rng{s: seed(group)}
 	out := make([]model.IOC, 0, n)
