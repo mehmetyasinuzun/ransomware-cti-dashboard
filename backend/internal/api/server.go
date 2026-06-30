@@ -196,7 +196,6 @@ func (s *Server) statusMap() map[string]any {
 	return m
 }
 
-// TriggerRefresh: arka planda veri cekimini baslatir. Zaten calisiyorsa false doner.
 func (s *Server) TriggerRefresh() bool {
 	s.rf.mu.Lock()
 	if s.rf.running {
@@ -228,7 +227,6 @@ func (s *Server) TriggerRefresh() bool {
 	return true
 }
 
-// StartScheduler: REFRESH_INTERVAL_HOURS>0 ise periyodik otomatik tazeleme baslatir.
 func (s *Server) StartScheduler() {
 	if s.cfg.RefreshIntervalHrs <= 0 {
 		return
@@ -244,7 +242,6 @@ func (s *Server) StartScheduler() {
 	}()
 }
 
-// SeedIfEmpty: veritabani bossa arka planda ilk veri cekimini tetikler.
 func (s *Server) SeedIfEmpty() {
 	var n int
 	if err := s.db.QueryRow(`SELECT COUNT(*) FROM victims`).Scan(&n); err == nil && n == 0 {
