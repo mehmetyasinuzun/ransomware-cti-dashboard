@@ -39,7 +39,6 @@ var sectorScores = map[string]float64{
 	"real estate":                   4,
 }
 
-// CISA 16 kritik altyapi sektorune denk gelen faaliyetler.
 var criticalSectors = map[string]bool{
 	"healthcare": true, "healthcare and public health": true, "energy": true,
 	"financial services": true, "finance": true, "public sector": true,
