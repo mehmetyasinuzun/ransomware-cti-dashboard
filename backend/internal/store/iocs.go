@@ -26,7 +26,6 @@ func scanIOCs(rows *sql.Rows) []model.IOC {
 	return out
 }
 
-// IOCList: tum gostergeleri zaman sirasiyla (en yeni once), filtreli ve sayfali doner.
 func (db *DB) IOCList(f IOCFilter) ([]model.IOC, int, error) {
 	var where []string
 	var args []any
@@ -64,7 +63,6 @@ func (db *DB) IOCList(f IOCFilter) ([]model.IOC, int, error) {
 	return scanIOCs(rows), total, rows.Err()
 }
 
-// AllVictims: tum kurban kayitlarini id sirasiyla doner (IOC yeniden-ingest icin).
 func (db *DB) AllVictims() ([]model.Victim, error) {
 	rows, err := db.Query(`SELECT id, date, ransomware_group, country, country_name, target_sector, attack_vector,
 		technique_id, technique, severity, ioc_ip, ioc_hash, victim, description, domain, claim_url, source_url
@@ -76,7 +74,6 @@ func (db *DB) AllVictims() ([]model.Victim, error) {
 	return scanVictims(rows), rows.Err()
 }
 
-// IOCGroups: gostergesi olan gruplar ve sayilari (filtre acilir menusu icin).
 func (db *DB) IOCGroups() ([]GroupStat, error) {
 	rows, err := db.Query(`SELECT ransomware_group, COUNT(*) c FROM iocs
 		GROUP BY ransomware_group ORDER BY c DESC`)
