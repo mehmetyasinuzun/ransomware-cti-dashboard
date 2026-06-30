@@ -24,7 +24,6 @@ type exportEntry struct {
 	FirstSeen  string `json:"first_seen_utc"`
 }
 
-// CandidateFamilies: bir grup adi icin olasi ThreatFox/Malpedia aile adlari.
 func CandidateFamilies(group string) []string {
 	var out []string
 	seen := map[string]bool{}
@@ -44,9 +43,6 @@ func CandidateFamilies(group string) []string {
 	return out
 }
 
-// LoadExport: ThreatFox tam export'unu indirir (veya cache'den okur) ve
-// malware adi -> []IOC indeksi kurar. Yalnizca istenen ailelerin IP ve hash
-// gostergeleri tutulur. Auth-Key GEREKMEZ.
 func (c *Client) LoadExport(ctx context.Context, cacheDir string, refresh bool, wanted map[string]bool) (map[string][]model.IOC, error) {
 	jsonPath := filepath.Join(cacheDir, "threatfox_full.json")
 	var data []byte
@@ -126,7 +122,6 @@ func indexExport(data []byte, wanted map[string]bool) (map[string][]model.IOC, e
 	return idx, nil
 }
 
-// IOCsFromIndex: bir grup icin export indeksinden IOC toplar (deger bazli tekil, limitli).
 func IOCsFromIndex(group string, idx map[string][]model.IOC, limit int) []model.IOC {
 	var out []model.IOC
 	seen := map[string]bool{}
