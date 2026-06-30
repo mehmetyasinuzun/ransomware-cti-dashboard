@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-// Agirliklar CVSS v4 kompozit mantigini model alir; toplam = 1.0.
 const (
 	wSector    = 0.30
 	wGroup     = 0.25
@@ -57,7 +56,6 @@ func IOCScore(hasIOC bool) float64 {
 	return 2
 }
 
-// GroupScore: grubun kurban sayisinin log olcekli yuzdesi (0-10).
 func GroupScore(groupCount, maxGroupCount int) float64 {
 	if maxGroupCount <= 1 {
 		return 5
