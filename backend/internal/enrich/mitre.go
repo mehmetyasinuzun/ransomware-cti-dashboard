@@ -9,12 +9,12 @@ import (
 const tacticInitialAccess = "TA0001"
 
 var impactTechniques = map[string]bool{
-	"T1486": true, // Data Encrypted for Impact
-	"T1490": true, // Inhibit System Recovery
-	"T1485": true, // Data Destruction
-	"T1489": true, // Service Stop
-	"T1491": true, // Defacement
-	"T1561": true, // Disk Wipe
+	"T1486": true,
+	"T1490": true,
+	"T1485": true,
+	"T1489": true,
+	"T1491": true,
+	"T1561": true,
 }
 
 func baseTechnique(id string) string {
@@ -53,11 +53,6 @@ func ImpactScore(p model.GroupProfile) float64 {
 	return 6
 }
 
-// PrimaryTechnique: bir kayda atanacak temsil teknigi. Impact varsa onu, yoksa
-// grubun teknikleri arasindan kayit indeksine gore donerek cesitlilik saglar.
-// PrimaryTechnique: bir kayda atanacak temsil teknigi. Grubun MITRE TTP kumesi
-// icinden kayit indeksine gore donerek gercekci bir dagilim uretir. Profili bos
-// gruplarda ransomware'in imza teknigi T1486'ya duser.
 func PrimaryTechnique(p model.GroupProfile, idx int) model.Technique {
 	if len(p.Techniques) == 0 {
 		return model.Technique{TacticID: "TA0040", TacticName: "Impact", TechniqueID: "T1486", TechniqueName: "Data Encrypted for Impact"}
@@ -77,7 +72,6 @@ var iaVectorNames = map[string]string{
 	"T1200": "Hardware Additions",
 }
 
-// CISA #StopRansomware advisory'lerinde belgelenen baskin ilk-erisim vektorleri.
 var canonicalVectors = []string{
 	"Phishing",
 	"Exploit Public-Facing Application",
