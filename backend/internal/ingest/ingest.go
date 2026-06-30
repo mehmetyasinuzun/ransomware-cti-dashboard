@@ -32,7 +32,6 @@ type Stats struct {
 	GeneratedAt string
 }
 
-// running: ayni anda birden fazla ingestion'i engeller (sunucu refresh + scheduler).
 var mu sync.Mutex
 
 func Run(ctx context.Context, cfg config.Config) (Stats, error) {
@@ -245,9 +244,6 @@ func runLocked(ctx context.Context, cfg config.Config) (Stats, error) {
 	return stats, nil
 }
 
-// ReingestIOCs: kurban verisini DB'den okur, sadece IOC katmanini abuse.ch'ten
-// yeniden cekip yeniden olusturur. ransomware.live'a HIC dokunmaz (kaynak cokse
-// veya cap degisse hizli ve guvenli sekilde IOC'lari tazelemek icin).
 func ReingestIOCs(ctx context.Context, cfg config.Config) (Stats, error) {
 	mu.Lock()
 	defer mu.Unlock()
