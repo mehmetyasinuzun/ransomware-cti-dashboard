@@ -174,21 +174,6 @@ a:hover {
   flex-shrink: 0;
   color: currentColor;
 }
-.nav-foot {
-  padding: 14px 16px 16px;
-  border-top: 1px solid var(--border);
-  font-size: 11px;
-  color: var(--text-lo);
-}
-.brand-logo {
-  display: block;
-  width: 100%;
-  max-width: 192px;
-  height: auto;
-  opacity: 0.95;
-  margin: 0 auto;
-}
-
 .main {
   display: flex;
   flex-direction: column;

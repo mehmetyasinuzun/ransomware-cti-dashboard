@@ -221,4 +221,4 @@ Analitik uç noktaları (`summary`, `groups`, `countries`, `sectors`, `timeserie
 
 ---
 
-Yıldız · Cyber Threat Intelligence
+RansomWatch · Cyber Threat Intelligence

@@ -42,16 +42,6 @@ export function Sidebar({ active, onChange }: { active: string; onChange: (id: s
           </div>
         ))}
       </nav>
-      <div className="nav-foot">
-        <img
-          className="brand-logo"
-          src="/yildiz-logo.png"
-          alt="Yıldız"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
-        />
-      </div>
     </aside>
   );
 }
